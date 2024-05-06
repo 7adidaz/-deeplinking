@@ -1,28 +1,43 @@
 import {useLinkTo} from '@react-navigation/native';
 import React from 'react';
-import {Button, Text, View} from 'react-native';
+import {Button, Linking, StyleSheet, Text, View} from 'react-native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
+
+const styles = StyleSheet.create({
+  textStyle: {fontSize: 50, fontWeight: 'bold', color: 'red'},
+  m20: {marginTop: 20},
+});
+
+const Textx = ({text}: {text: string}) => (
+  <Text style={styles.textStyle}>{text}</Text>
+);
 
 function Screen1(): React.JSX.Element {
   const linkTo = useLinkTo();
   return (
     <View>
-      <Text style={{fontSize: 50, fontWeight: 'bold', color: 'red'}}>
-        Screen 1
-      </Text>
+      <Textx text="Screen 1" />
       <Button
         title="go to screen 2"
         onPress={() => {
           linkTo('/2');
         }}
       />
-      <View style={{marginTop: 20}} />
+      <View style={styles.m20} />
       <Button
-        title="go to screen 5 in screen 3"
+        title="go to screen 4 in screen 3"
         onPress={() => {
-          linkTo('/3/5');
+          linkTo('/3/4');
+        }}
+      />
+
+      <View style={styles.m20} />
+      <Button
+        title="here goes to 2"
+        onPress={() => {
+          Linking.openURL('mychat:///2');
         }}
       />
     </View>
@@ -32,9 +47,7 @@ function Screen1(): React.JSX.Element {
 function Screen2(): React.JSX.Element {
   return (
     <View>
-      <Text style={{fontSize: 50, fontWeight: 'bold', color: 'red'}}>
-        Screen 2
-      </Text>
+      <Textx text="Screen 2" />
     </View>
   );
 }
@@ -54,9 +67,7 @@ function Screen3(): React.JSX.Element {
 function Screen4(): React.JSX.Element {
   return (
     <View>
-      <Text style={{fontSize: 50, fontWeight: 'bold', color: 'red'}}>
-        Screen 4
-      </Text>
+      <Textx text="Screen 4" />
     </View>
   );
 }
@@ -64,11 +75,17 @@ function Screen4(): React.JSX.Element {
 function Screen5(): React.JSX.Element {
   return (
     <View>
-      <Text style={{fontSize: 50, fontWeight: 'bold', color: 'red'}}>
-        Screen 5
-      </Text>
+      <Textx text="Screen 5" />
     </View>
   );
 }
 
-export {Screen1, Screen2, Screen3};
+function NotFound(): React.JSX.Element {
+  return (
+    <View>
+      <Textx text="Not Found" />
+    </View>
+  );
+}
+
+export {Screen1, Screen2, Screen3, NotFound};

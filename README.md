@@ -1,1 +1,8 @@
-#TODO:  [this](https://developer.apple.com/documentation/Xcode/supporting-associated-domains) and [this](https://developer.apple.com/documentation/Xcode/supporting-associated-domains), android link related to `verifying Android App Links` is broken... needed to be fixed.
+
+
+- npm i & npm run start
+- edit server.js host to your ip
+- cd server && node server.js
+- cd to your ip:3000 and press anylink.
+
+bye.

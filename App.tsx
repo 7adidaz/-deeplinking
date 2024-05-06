@@ -1,16 +1,21 @@
 import React from 'react';
-import {Screen1, Screen2, Screen3} from './Screens/Screens';
+import {NotFound, Screen1, Screen2, Screen3} from './Screens/Screens';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 
 //TODO: passing information.
+//TODO: make the app open links of "http://myChatty.com/xxx"
+
 function App(): React.JSX.Element {
   const linking = {
-    prefixes: ['https://mychat.com', 'mychat://'],
+    prefixes: ['http://www.myChatyyy.com', 'mychat://'],
     config: {
       screens: {
+        /*
+         * SCREEN NAME : PATH
+         * */
         1: '1',
         2: '2',
         3: {
@@ -20,6 +25,7 @@ function App(): React.JSX.Element {
             5: '5',
           },
         },
+        NotFound: '*',
       },
     },
   };
@@ -33,6 +39,7 @@ function App(): React.JSX.Element {
         <Stack.Screen name="1" component={Screen1} />
         <Stack.Screen name="2" component={Screen2} />
         <Stack.Screen name="3" component={Screen3} />
+        <Stack.Screen name="NotFound" component={NotFound} />
       </Stack.Navigator>
     </NavigationContainer>
   );
